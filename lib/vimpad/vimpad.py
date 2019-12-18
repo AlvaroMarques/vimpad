@@ -39,7 +39,13 @@ class DontpadControl():
         with open(self.filename, "w") as f:
                 f.write(page_str)
         vim.command(f"vsplit {self.filename}")
-
+    @check_wrapper
+    def savePage(self):
+        vim.command(':w')
+        with open(self.filename, "r") as f:
+            txt = f.read()
+        payload = {'text': txt} 
+        post(self.url, params=payload)
       
  
         
