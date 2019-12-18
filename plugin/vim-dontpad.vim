@@ -16,7 +16,7 @@ sys.path.append(python_module_path)
 
 from vimpad import vimpad
 
-page = vimpad.DontpadControl("pupo")
+page = vimpad.DontpadControl(vim.eval("a:pageName"))
 page.openPage()
 
 EOF
@@ -38,7 +38,7 @@ sys.path.append(python_module_path)
 
 from vimpad import vimpad
 
-page = vimpad.DontpadControl("pupo")
+page = vimpad.DontpadControl(vim.eval("a:pageName"))
 page.savePage()
 
 EOF
