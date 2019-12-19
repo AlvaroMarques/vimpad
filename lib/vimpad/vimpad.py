@@ -34,12 +34,20 @@ class DontpadControl():
             soup = BeautifulSoup(x.text,'html.parser')
             text = soup.find('textarea', {'id':'text'})
             return str(re.sub(r'</?textarea[\w\W\d]+?>',r'', str(text))).replace("</textarea>","")
+
+    @check_wrapper
+    def refreshPage(self):
+        page_str = self.getText()
+        with open(self.filename, "w") as f:
+                f.write(page_str)
+        vim.command(":e")
     @check_wrapper
     def openPage(self):
         page_str = self.getText()
         with open(self.filename, "w") as f:
                 f.write(page_str)
         vim.command(f"vsplit {self.filename}")
+    
     @check_wrapper
     def savePage(self):
         vim.command(':w')
