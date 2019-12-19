@@ -31,4 +31,4 @@ git clone git@github.com:AlvaroMarques/vimpad.git
 1. Use `:call OpenPage("location")` to open the `dontpad.com/location` 
 2. Use `:w` to write and save in the dontpad
 3. Use `:e` to refresh the page
-4. Whe quitting the vim session, the temporary file will be automatically removed from your system
+4. When quitting the vim session, the temporary file will be automatically removed from your system
