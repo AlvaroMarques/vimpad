@@ -3,6 +3,7 @@ import re
 import vim
 from functools import wraps
 from bs4 import BeautifulSoup
+from os import remove
 
 class DontpadControl():
     def __init__(self, url=""):
@@ -12,7 +13,7 @@ class DontpadControl():
             return
         self.location = url
         self.url = f"http://dontpad.com/{url}" 
-        self.filename = f".{url}.tmp"
+        self.filename = f".{url}.dontpad.tmp"
         self.url_menu = f"http://dontpad.com/{url}.menu.json" 
     def check_wrapper(function):
         @wraps(function)
@@ -46,6 +47,8 @@ class DontpadControl():
             txt = f.read()
         payload = {'text': txt} 
         post(self.url, params=payload)
-      
+    def exit(self):
+        vim.command(':q')
+        remove(self.filename)
  
         
